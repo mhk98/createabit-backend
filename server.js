@@ -4,6 +4,7 @@ const cors = require("cors");
 const routes = require("./routes");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
+
 // const { notFoundHandler, errorHandler } = require("./middlewares/error");
 // const { createResponse } = require("././utils/responseGenerator");
 require("./models");
@@ -13,12 +14,7 @@ const shortid = require("shortid");
 // const recharge = require('./models/recharge/recharge');
 
 // middlewares
-app.use(
-  cors({
-    credentials: true,
-    origin: ["http://localhost:3000", "http://localhost:5000"],
-  })
-);
+app.use(cors({ origin: true, credentials: true }));
 
 // const swaggerOptions = {
 //   swaggerDefinition:{
@@ -44,11 +40,17 @@ app.use("/api/v1", routes);
 // port initializing
 const port = 5000;
 
-// parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }));
+// parse requests of content-type - application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }));
 
-// parse application/json
+// parse requests of content-type - application/json
 app.use(bodyParser.json());
+
+// // parse application/x-www-form-urlencoded
+// app.use(bodyParser.urlencoded({ extended: false }));
+
+// // parse application/json
+// app.use(bodyParser.json());
 
 // main route
 app.get("/", (req, res) => {

@@ -14,7 +14,11 @@ module.exports = (sequelize, DataTypes) => {
       title: {
         type: DataTypes.STRING,
       },
-      text: {
+      text1: {
+        type: DataTypes.STRING,
+        Unique: true,
+      },
+      text2: {
         type: DataTypes.STRING,
         Unique: true,
       },
