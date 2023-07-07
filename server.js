@@ -13,12 +13,14 @@ const shortid = require("shortid");
 // const recharge = require('./models/recharge/recharge');
 
 // middlewares
-app.use(
-  cors({
-    credentials: true,
-    origin: ["http://localhost:3000", "http://localhost:5000"],
-  })
-);
+// app.use(
+//   cors({
+//     credentials: true,
+//     origin: ["http://localhost:3000", "http://localhost:5000"],
+//   })
+// );
+
+app.use(cors({ origin: true, credentials: true }));
 
 // const swaggerOptions = {
 //   swaggerDefinition:{
