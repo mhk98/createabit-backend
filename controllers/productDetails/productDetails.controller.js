@@ -1,20 +1,20 @@
 // const { createResponse } = require("../../utils/responseGenerator");
 const db = require("../../models");
-const ServiceDetails = db.serviceDetails;
+const ProductDetails = db.productDetails;
 
 // console.log(User)
 
-exports.updateServiceDetails = async (req, res) => {
+exports.updateProductDetails = async (req, res) => {
   try {
     const { id } = req.params;
-    const serviceInfo = req.body;
-    const result = await ServiceDetails.update(serviceInfo, {
-      where: { serviceServiceId: id },
+    const productInfo = req.body;
+    const result = await ProductDetails.update(productInfo, {
+      where: { productProductId: id },
     });
 
     res.status(200).send({
       status: "Success",
-      message: "Successfully update service details",
+      message: "Successfully update product details",
       data: result,
     });
   } catch (error) {
@@ -26,18 +26,18 @@ exports.updateServiceDetails = async (req, res) => {
   }
 };
 
-exports.getSingleServiceDetails = async (req, res) => {
+exports.getSingleProductDetails = async (req, res) => {
   try {
     const { id } = req.params;
-    const result = await ServiceDetails.findOne({
-      where: { serviceServiceId: id },
+    const result = await ProductDetails.findOne({
+      where: { productProductId: id },
     });
 
     // console.log("insertService_Details", insertService_Details);
 
     res.status(200).send({
       status: "Success",
-      message: "All service details here",
+      message: "All product details here",
       data: result,
     });
   } catch (error) {
