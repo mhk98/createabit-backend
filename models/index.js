@@ -21,7 +21,11 @@ db.serviceDetails = require("./serviceDetails/serviceDetails")(
   DataTypes
 );
 db.product = require("./product/product")(db.sequelize, DataTypes);
+<<<<<<< HEAD
 db.productCategory = require("./productCategory/productCategory.js")(
+=======
+db.productDetails = require("./productDetails/productDetails")(
+>>>>>>> 4025c9d4d347193955be4ec9b7f1a3d0de7ef82a
   db.sequelize,
   DataTypes
 );
