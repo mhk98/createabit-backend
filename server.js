@@ -4,6 +4,8 @@ const cors = require("cors");
 const routes = require("./routes");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
+var http = require("http");
+
 // const { notFoundHandler, errorHandler } = require("./middlewares/error");
 // const { createResponse } = require("././utils/responseGenerator");
 require("./models");
@@ -46,11 +48,20 @@ app.use("/api/v1", routes);
 // port initializing
 const port = 5000;
 
-// parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }));
+// parse requests of content-type - application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }));
 
-// parse application/json
+// parse requests of content-type - application/json
 app.use(bodyParser.json());
+
+//static image folder
+app.use("/Images", express.static("Images"));
+
+// // parse application/x-www-form-urlencoded
+// app.use(bodyParser.urlencoded({ extended: false }));
+
+// // parse application/json
+// app.use(bodyParser.json());
 
 // main route
 app.get("/", (req, res) => {
@@ -60,7 +71,11 @@ app.get("/", (req, res) => {
 // error handler
 // app.use([notFoundHandler, errorHandler]);
 
+//create a server object:
+
+const server = http.createServer(app);
+
 // listening server
-app.listen(port, () =>
+server.listen(port, () =>
   console.log(`Server is listening at http://localhost:${port}`)
 );

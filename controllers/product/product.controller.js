@@ -1,30 +1,19 @@
-// const { createResponse } = require("../../utils/responseGenerator");
 const db = require("../../models");
-const Service = db.service;
-const ServiceDetails = db.serviceDetails;
+const Product = db.product;
+const ProductDetails = db.productDetails;
 
-// console.log(User)
-
-exports.createService = async (req, res, file) => {
+exports.createProduct = async (req, res) => {
   try {
-    const { title, text, feature1, feature2, feature3 } = req.body;
-    const result = await Service.create({
-      title: title,
-      text: text,
-      feature1: feature2,
-      feature2: feature2,
-      feature3: feature3,
-      image: req.file.path,
-    });
-    const insertService_Details = await ServiceDetails.create({
-      serviceServiceId: result.Service_Id,
+    const result = await Product.create(req.body);
+    const insertProduct_Details = await ProductDetails.create({
+      productProductId: result.Product_Id,
     });
 
     // console.log("insertService_Details", insertService_Details);
 
     res.status(200).send({
       status: "Success",
-      message: "Successfully create service",
+      message: "Successfully create product",
       data: result,
     });
   } catch (error) {
@@ -36,15 +25,13 @@ exports.createService = async (req, res, file) => {
   }
 };
 
-exports.getAllService = async (req, res) => {
+exports.getAllProduct = async (req, res) => {
   try {
-    const result = await Service.findAll();
-
-    // console.log("insertService_Details", insertService_Details);
+    const result = await Product.findAll();
 
     res.status(200).send({
       status: "Success",
-      message: "Successfully got service",
+      message: "Successfully got product",
       data: result,
     });
   } catch (error) {

@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-  const ServiceDetails = sequelize.define(
-    "serviceDetails",
+  const ProductCategory = sequelize.define(
+    "productCategory",
     {
       ServiceDetails_Id: {
         type: DataTypes.INTEGER,
@@ -48,5 +48,5 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
-  return ServiceDetails;
+  return ProductCategory;
 };

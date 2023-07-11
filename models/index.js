@@ -20,6 +20,11 @@ db.serviceDetails = require("./serviceDetails/serviceDetails")(
   db.sequelize,
   DataTypes
 );
+db.product = require("./product/product")(db.sequelize, DataTypes);
+db.productCategory = require("./productCategory/productCategory.js")(
+  db.sequelize,
+  DataTypes
+);
 
 // db.Course.hasMany(db.Intake, { foreignkey: "Course_Id" });
 // db.Intake.belongsTo(db.Course, { foreignkey: "Course_Id" });

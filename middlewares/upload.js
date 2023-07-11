@@ -22,4 +22,4 @@ module.exports.upload = multer({
       return cb("Give proper files formate to upload");
     }
   },
-}).single("Img");
+}).single("image");
