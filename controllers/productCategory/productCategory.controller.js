@@ -4,11 +4,45 @@ const ProductCategory = db.productCategory;
 
 // console.log(User)
 
-exports.updateProductCategory = async (req, res) => {
+exports.updateProductCategory = async (req, res, file) => {
   try {
     const { id } = req.params;
-    const productInfo = req.body;
-    const result = await ProductCategory.update(productInfo, {
+    const { title, text } = req.body;
+    const data = {
+      title: title,
+      text: text,
+      image: req.file.path,
+    };
+
+    const result = await ProductCategory.update(data, {
+      where: { productProductId: id },
+    });
+
+    res.status(200).send({
+      status: "Success",
+      message: "Successfully update product details",
+      data: result,
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: "fail",
+      message: "Something went wrong",
+      error: error.message,
+    });
+  }
+};
+exports.insertProductCategory = async (req, res, file) => {
+  try {
+    const { id } = req.params;
+    const { title, text } = req.body;
+    const data = {
+      title: title,
+      text: text,
+      image: req.file.path,
+      productProductId: id,
+    };
+
+    const result = await ProductCategory.create(data, {
       where: { productProductId: id },
     });
 
@@ -26,6 +60,28 @@ exports.updateProductCategory = async (req, res) => {
   }
 };
 
+exports.getAllProductCategory = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const result = await ProductCategory.findAll({
+      where: { productProductId: id },
+    });
+
+    // console.log("insertService_Details", insertService_Details);
+
+    res.status(200).send({
+      status: "Success",
+      message: "All product category here",
+      data: result,
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: "fail",
+      message: "Something went wrong",
+      error: error.message,
+    });
+  }
+};
 exports.getSingleProductCategory = async (req, res) => {
   try {
     const { id } = req.params;
@@ -37,7 +93,7 @@ exports.getSingleProductCategory = async (req, res) => {
 
     res.status(200).send({
       status: "Success",
-      message: "All product category here",
+      message: "Single product category here",
       data: result,
     });
   } catch (error) {

@@ -36,5 +36,7 @@ db.productCategory = require("./productCategory/productCategory.js")(
 // db.serviceDetails.belongsTo(db.service, { foreignkey: "Service_Id" });
 db.serviceDetails.belongsTo(db.service, { foreignkey: "Service_Id" });
 db.service.hasMany(db.serviceDetails, { foreignkey: "Service_Id" });
+db.productCategory.belongsTo(db.product, { foreignkey: "Product_Id" });
+db.product.hasMany(db.productCategory, { foreignkey: "Product_Id" });
 
 module.exports = db;

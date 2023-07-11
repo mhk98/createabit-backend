@@ -1,11 +1,17 @@
 const db = require("../../models");
 const Product = db.product;
-const ProductDetails = db.productDetails;
+const ProductCategory = db.productCategory;
 
-exports.createProduct = async (req, res) => {
+exports.createProduct = async (req, res, file) => {
   try {
-    const result = await Product.create(req.body);
-    const insertProduct_Details = await ProductDetails.create({
+    const { title, text } = req.body;
+    const data = {
+      title: title,
+      text: text,
+      image: req.file.path,
+    };
+    const result = await Product.create(data);
+    const insertProduct_Details = await ProductCategory.create({
       productProductId: result.Product_Id,
     });
 

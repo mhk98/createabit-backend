@@ -73,6 +73,11 @@ app.get("/", (req, res) => {
 
 //create a server object:
 
+// Catch-all route for handling API not found
+app.use((req, res, next) => {
+  res.status(404).json({ error: "API not found" });
+});
+
 const server = http.createServer(app);
 
 // listening server
