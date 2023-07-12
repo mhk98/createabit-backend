@@ -8,7 +8,7 @@ router.put(
   productCategory.updateProductCategory
 );
 router.post("/:id", upload, productCategory.insertProductCategory);
-router.get("/allproduct/:id", upload, productCategory.getAllProductCategory);
+router.get("/allproduct/:id", productCategory.getAllProductCategory);
 router.get("/:id", productCategory.getSingleProductCategory);
 
 module.exports = router;
