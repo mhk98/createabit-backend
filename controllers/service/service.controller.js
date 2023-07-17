@@ -56,6 +56,33 @@ exports.getAllService = async (req, res) => {
   }
 };
 
+exports.updateService = async (req, res, file) => {
+  try {
+    const { id } = req.params;
+
+    const data = {
+      image: req.file.path,
+    };
+    const result = await Service.update(data, {
+      where: { Service_Id: id },
+    });
+
+    // console.log("insertService_Details", insertService_Details);
+
+    res.status(200).send({
+      status: "Success",
+      message: "Successfully update service",
+      data: result,
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: "fail",
+      message: "Something went wrong",
+      error: error.message,
+    });
+  }
+};
+
 /**
  * 1. Check if Email and password are given
  * 2. Load user with email
