@@ -40,7 +40,6 @@ exports.insertProductCategory = async (req, res, file) => {
       title: title,
       text: text,
       image: req.file.path,
-      productProductId: id,
     };
 
     const result = await ProductCategory2.create(data);

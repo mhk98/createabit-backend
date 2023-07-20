@@ -40,15 +40,16 @@ exports.insertProductCategory = async (req, res, file) => {
       title: title,
       text: text,
       image: req.file.path,
-      productProductId: id,
     };
 
     const result = await ProductCategory1.create(data);
 
     console.log("ProductDetails1", result.ProductCategory_Id);
     const insertShop = await ProductDetails1.create({
-      productCategoryProductCategoryId: result.ProductCategory_Id,
+      productCategory1ProductCategoryId: result.ProductCategory_Id,
     });
+
+    console.log("insertShop", insertShop);
 
     res.status(200).send({
       status: "Success",

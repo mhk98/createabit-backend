@@ -11,9 +11,6 @@ exports.createProduct = async (req, res, file) => {
       image: req.file.path,
     };
     const result = await Product.create(data);
-    const insertProduct_Details = await ProductCategory.create({
-      productProductId: result.Product_Id,
-    });
 
     // console.log("insertService_Details", insertService_Details);
 
@@ -38,6 +35,28 @@ exports.getAllProduct = async (req, res) => {
     res.status(200).send({
       status: "Success",
       message: "Successfully got product",
+      data: result,
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: "fail",
+      message: "Something went wrong",
+      error: error.message,
+    });
+  }
+};
+exports.deleteProduct = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const result = await Product.destroy({
+      where: {
+        Product_Id: id,
+      },
+    });
+
+    res.status(200).send({
+      status: "Success",
+      message: "Successfully delete product",
       data: result,
     });
   } catch (error) {
