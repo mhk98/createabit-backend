@@ -47,10 +47,7 @@ db.productDetails3 = require("./productDetails3/productDetails3")(
   DataTypes
 );
 
-db.cart = require("./cart/cart")(
-  db.sequelize,
-  DataTypes
-);
+db.cart = require("./cart/cart")(db.sequelize, DataTypes);
 
 // db.Course.hasMany(db.Intake, { foreignkey: "Course_Id" });
 // db.Intake.belongsTo(db.Course, { foreignkey: "Course_Id" });
