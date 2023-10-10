@@ -9,11 +9,13 @@ const productCategory3 = require("./productCategory3");
 const productDetails1 = require("./productDetails1");
 const productDetails2 = require("./productDetails2");
 const productDetails3 = require("./productDetails3");
+const cart = require("./cart");
 
 router.use("/user", user);
 router.use("/service", service);
 router.use("/service-details", serviceDetails);
 router.use("/product", product);
+router.use("/cart", cart);
 router.use("/productCategory1", productCategory1);
 router.use("/productCategory2", productCategory2);
 router.use("/productCategory3", productCategory3);

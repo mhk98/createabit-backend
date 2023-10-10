@@ -6,7 +6,7 @@ exports.createCart = async (req, res, file) => {
     const { title, price } = req.body;
     const data = {
       title: title,
-      text: text,
+      price: price,
       image: req.file.path,
     };
     const result = await Cart.create(data);
