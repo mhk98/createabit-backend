@@ -3,11 +3,12 @@ const Cart = db.cart;
 
 exports.createCart = async (req, res, file) => {
   try {
-    const { title, price } = req.body;
+    const { title, price, image } = req.body;
+    console.log(req.body);
     const data = {
       title: title,
       price: price,
-      image: req.file.path,
+      image: image,
     };
     const result = await Cart.create(data);
 
@@ -47,6 +48,7 @@ exports.getCartProduct = async (req, res) => {
 exports.deleteCartProduct = async (req, res) => {
   try {
     const { id } = req.params;
+    console.log("Delete product", id);
     const result = await Cart.destroy({
       where: {
         Cart_Id: id,

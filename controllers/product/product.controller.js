@@ -4,10 +4,11 @@ const ProductCategory = db.productCategory;
 
 exports.createProduct = async (req, res, file) => {
   try {
-    const { title, text } = req.body;
+    const { title, text, price } = req.body;
     const data = {
       title: title,
       text: text,
+      price: price,
       image: req.file.path,
     };
     const result = await Product.create(data);

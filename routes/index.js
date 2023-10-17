@@ -9,7 +9,7 @@ const productCategory3 = require("./productCategory3");
 const productDetails1 = require("./productDetails1");
 const productDetails2 = require("./productDetails2");
 const productDetails3 = require("./productDetails3");
-const cart = require("./cart");
+const cart = require("./cart")
 
 router.use("/user", user);
 router.use("/service", service);
@@ -22,5 +22,7 @@ router.use("/productCategory3", productCategory3);
 router.use("/productDetails1", productDetails1);
 router.use("/productDetails2", productDetails2);
 router.use("/productDetails3", productDetails3);
+router.use("/cart", cart);
+
 
 module.exports = router;
