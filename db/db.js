@@ -10,10 +10,9 @@ const sequelize = new Sequelize(
   `${process.env.DB_USER}`,
   `${process.env.DB_PASSWORD}`,
   {
-    host: "db4free.net",
+    // host: "db4free.net",
 
-    // host: "localhost",
-    // host: "sql6.freesqldatabase.com",
+    host: "sql12.freemysqlhosting.net",
     dialect: "mysql",
     pool: { max: 5, min: 0, idle: 10000 },
     logging: false,

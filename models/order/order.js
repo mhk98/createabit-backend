@@ -9,14 +9,15 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
       },
 
-      title: {
-        type: DataTypes.STRING,
+      orderDetails: {
+        type: DataTypes.JSON, // Use JSON data type for the order details
         allowNull: false,
-      },
-
-      price: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
+        get: function () {
+          return JSON.parse(this.getDataValue("orderDetails"));
+        },
+        set: function (val) {
+          return this.setDataValue("orderDetails", JSON.stringify(val));
+        },
       },
       subtotal: {
         type: DataTypes.STRING,
