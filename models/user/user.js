@@ -30,73 +30,19 @@ module.exports = (sequelize, DataTypes, Sequelize) => {
         unique: true,
         required: [true, "Email address is required"],
       },
-      // PIN: {
-      //   type: DataTypes.STRING,
-      //   allowNull: true,
-      // },
-      // IDcard: {
-      //   type: DataTypes.STRING,
-      //   allowNull: true,
-      // },
-      // Passportno: {
-      //   type: DataTypes.STRING,
-      //   allowNull: true,
-      // },
+
       pass_word: {
         type: DataTypes.STRING,
         allowNull: true,
         required: [true, "Password is required"],
-        // validate: {
-        //   validator: (value) =>
-        //     validator.isStrongPassword(value, {
-        //       minLength: 6,
-        //       minLowercase: 3,
-        //       minNumbers: 1,
-        //       minUppercase: 1,
-        //       minnSymbols: 1,
-        //     }),
-        //   message: "Password {VALUE} is not strong enough",
-        // },
       },
-      // Mobile_No: {
-      //   type: DataTypes.STRING,
-      //   allowNull: true,
-      // },
-      // agent: {
-      //   type: DataTypes.STRING,
-      //   allowNull: true,
-      // },
+
       role: {
         type: DataTypes.STRING,
         defaultValue: "user",
         enum: ["user", "admin", "super_admin"],
       },
-
-      // status: {
-      //   type: DataTypes.ENUM("pending", "active", "disabled"),
-      //   defaultValue: "pending",
-      // },
     },
-    //   {
-    //     hooks: {
-    //       beforeCreate: async (user) => {
-    //         if (user.password) {
-    //           const salt = await bcrypt.genSaltSync(10, 'a');
-    //           user.password = bcrypt.hashSync(user.password, salt);
-    //         }
-    //       },
-    //     },
-    //   },
-    // );
-    // usertbls.prototype.validPassword = async (password, hash) => {
-    //   return await bcrypt.compareSync(password, hash);
-    // };
-
-    // usertbls.prototype.getHashPass = async (password) => {
-    //   const salt = await bcrypt.genSaltSync(10, 'a');
-    //   const hashed = bcrypt.hashSync(password, salt);
-    //   return hashed;
-    // };
 
     {
       hooks: {

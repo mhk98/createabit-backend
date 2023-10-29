@@ -1,13 +1,12 @@
 const db = require("../../models");
 const Checkout = db.checkout;
 
-exports.createCheckout = async (req, res, file) => {
+exports.createCheckout = async (req, res) => {
   try {
     // const { firstname, lastname, email, country, city, area, postcode, address, phone, company } = req.body;
+    console.log("checkout", req.body);
 
     const result = await Checkout.create(req.body);
-
-    // console.log("insertService_Details", insertService_Details);
 
     res.status(200).send({
       status: "Success",

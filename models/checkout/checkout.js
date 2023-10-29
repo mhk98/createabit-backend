@@ -46,17 +46,16 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      Company: {
-        type: DataTypes.STRING,
+
+      orderDetails: {
+        type: DataTypes.JSON, // Use JSON data type for the order details
         allowNull: false,
-      },
-      Title: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
-      Price: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
+        get: function () {
+          return JSON.parse(this.getDataValue("orderDetails"));
+        },
+        set: function (val) {
+          return this.setDataValue("orderDetails", JSON.stringify(val));
+        },
       },
       SubTotal: {
         type: DataTypes.INTEGER,

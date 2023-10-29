@@ -10,15 +10,15 @@ const sequelize = new Sequelize(
   `${process.env.DB_USER}`,
   `${process.env.DB_PASSWORD}`,
   {
-    host: "db4free.net",
-
+    // host: "db4free.net",
+    host: "localhost",
     // host: "sql12.freemysqlhosting.net",
     dialect: "mysql",
     pool: { max: 5, min: 0, idle: 10000 },
     logging: false,
     timezone: "+06:00",
-    // port: 3307,
-    port: 3306,
+    port: 3307,
+    // port: 3306,
   }
 );
 

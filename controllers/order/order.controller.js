@@ -5,6 +5,7 @@ exports.createOrder = async (req, res) => {
   try {
     // const { firstname, lastname, email, country, city, area, postcode, address, phone, company } = req.body;
 
+    console.log("my order details here", req.body);
     const result = await Order.create(req.body);
 
     // console.log("insertService_Details", insertService_Details);
