@@ -12,6 +12,7 @@ const productDetails3 = require("./productDetails3");
 const cart = require("./cart");
 const checkout = require("./checkout");
 const order = require("./order");
+const payment = require("./payment");
 
 router.use("/user", user);
 router.use("/service", service);
@@ -27,5 +28,6 @@ router.use("/productDetails3", productDetails3);
 router.use("/cart", cart);
 router.use("/checkout", checkout);
 router.use("/order", order);
+router.use("/payment", payment);
 
 module.exports = router;
