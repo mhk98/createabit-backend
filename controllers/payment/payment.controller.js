@@ -9,7 +9,7 @@ exports.createPayment = async (req, res) => {
     const { Price } = req.body;
     const amount = Price * 100;
 
-    console.log("price of payment", req.body);
+    console.log("price of payment", Price);
     // Create a PaymentIntent with the order amount and currency
     const paymentIntent = await stripe.paymentIntents.create({
       amount: amount,
@@ -20,7 +20,7 @@ exports.createPayment = async (req, res) => {
 
     res.status(200).send({
       status: "Success",
-      message: "Successfully got all Checkout",
+      message: "Successfully got all payment",
       clientSecret: paymentIntent.client_secret,
     });
   } catch (error) {
