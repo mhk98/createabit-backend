@@ -9,7 +9,7 @@ const { verifyToken } = require("../../utils/verifyToken");
 // router.post('/', user.create);
 // router.get('/', user.findAll);
 
-router.post("/signup", user.signup);
+router.post("/register", user.signup);
 router.post("/login", user.login);
 // router.get("/", verifyToken, authorization("super_admin"), user.getAllUsers);
 router.get("/:id", user.getSingleUser);

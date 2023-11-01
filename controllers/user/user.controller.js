@@ -9,17 +9,6 @@ const User = db.user;
 
 exports.signup = async (req, res) => {
   try {
-    // const users = req.body;
-    // console.log(req.body);
-
-    // const userCheck = await findOne({
-    //   where: { User_Id: req.body.User_Id }
-    // })
-
-    // if (userCheck.User_Email == req.body.User_Email) {
-    //   console.log('User exist')
-    // }
-
     const user = await User.create(req.body);
     // console.log('data save on database', user)
     res.status(200).send({
@@ -27,8 +16,6 @@ exports.signup = async (req, res) => {
       message: "Successfully signed up",
       data: user,
     });
-
-    // console.log('UserId', user.User_ID)
   } catch (error) {
     ErrorLogger.error(req.originalUrl + " " + error.message);
 

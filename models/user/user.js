@@ -9,31 +9,23 @@ module.exports = (sequelize, DataTypes, Sequelize) => {
         type: DataTypes.INTEGER(10),
         primaryKey: true,
         autoIncrement: true,
-        allowNull: true,
+        allowNull: false,
       },
-      // User_Type: {
-      //   type: DataTypes.STRING,
-      //   allowNull: true,
-      // },
-      // User_FirstName: {
-      //   type: DataTypes.STRING(30),
-      //   allowNull: true,
-      // },
+
       User_Name: {
         type: DataTypes.STRING(30),
         allowNull: true,
       },
       User_Email: {
         type: DataTypes.STRING(64),
-        allowNull: true,
-        // validate: [validator.isEmail, "Provide a valid Email"],
+        allowNull: false,
         unique: true,
         required: [true, "Email address is required"],
       },
 
       pass_word: {
         type: DataTypes.STRING,
-        allowNull: true,
+        allowNull: false,
         required: [true, "Password is required"],
       },
 
