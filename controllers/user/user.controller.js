@@ -12,7 +12,7 @@ exports.signup = async (req, res) => {
     });
 
     if (isUserExist) {
-      return res.status(409).send("User already exist");
+      return res.send("User already exist");
     }
 
     const user = await User.create(req.body);
@@ -24,7 +24,7 @@ exports.signup = async (req, res) => {
   } catch (error) {
     res.status(500).json({
       status: "fail",
-      message: "Username or password is not curret",
+      message: "Username or password is not currect",
       error: error.message,
     });
   }
@@ -81,21 +81,15 @@ exports.getSingleUser = async (req, res) => {
 exports.login = async (req, res) => {
   try {
     const { Email, Password } = req.body;
-    // console.log(req.body);
+    console.log("signup details", req.body);
 
     if (!Email || !Password) {
-      res.status(401).json({
-        status: "fail",
-        message: "Please provide your credentials",
-      });
+      return res.send("Please provide your credentials");
     }
 
     const user = await User.findOne({ where: { Email: Email } });
     if (!user) {
-      return res.status(401).json({
-        status: "fail",
-        message: "No user found. Please create an account first",
-      });
+      return res.send("No user found. Please create an account first");
     }
 
     const isPasswordValid = bcrypt.compareSync(Password, user.Password);
@@ -125,7 +119,7 @@ exports.login = async (req, res) => {
   } catch (error) {
     res.status(500).json({
       status: "fail",
-      message: "Username or password is not curret",
+      message: "Username or password is not currect",
       error: error.message,
     });
   }

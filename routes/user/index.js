@@ -13,6 +13,6 @@ router.post("/register", user.signup);
 router.post("/login", user.login);
 // router.get("/", verifyToken, authorization("super_admin"), user.getAllUsers);
 router.get("/:id", user.getSingleUser);
-// router.get("/", verifyToken, user.getAllUsers);
+router.get("/", user.getAllUsers);
 
 module.exports = router;
