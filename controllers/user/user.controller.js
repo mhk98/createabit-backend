@@ -116,7 +116,7 @@ exports.login = async (req, res) => {
       httpOnly: true,
     };
     res.cookie("refreshToken", refreshToken, cookieOptions);
-    res.cookie("accessToken", accessToken, cookieOptions);
+    res.cookie("token", accessToken, cookieOptions);
 
     res.status(200).send({
       status: "Success",
