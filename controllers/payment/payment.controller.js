@@ -6,12 +6,12 @@ const stripe = require("stripe")(
 
 exports.createPayment = async (req, res) => {
   try {
-    const { price } = req.body;
-    const amount = price * 100;
+    const { Price } = req.body;
+    const amount = Price * 100;
 
     console.log(req.body);
 
-    console.log("price of payment", Price);
+    console.log("price of payment", amount);
     // Create a PaymentIntent with the order amount and currency
     const paymentIntent = await stripe.paymentIntents.create({
       amount: amount,
@@ -20,11 +20,13 @@ exports.createPayment = async (req, res) => {
     });
     // const result = await Payment.create(req.body);
 
-    res.status(200).send({
-      status: "Success",
-      message: "Successfully got all payment",
-      clientSecret: paymentIntent.client_secret,
-    });
+    res.send({ clientSecret: paymentIntent.client_secret });
+
+    // res.status(200).send({
+    //   status: "Success",
+    //   message: "Successfully got all payment",
+    //   clientSecret: paymentIntent.client_secret,
+    // });
   } catch (error) {
     res.status(500).json({
       status: "fail",
