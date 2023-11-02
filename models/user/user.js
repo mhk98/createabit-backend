@@ -9,50 +9,54 @@ module.exports = (sequelize, DataTypes, Sequelize) => {
         type: DataTypes.INTEGER(10),
         primaryKey: true,
         autoIncrement: true,
+        allowNull: true,
+      },
+
+      Name: {
+        type: DataTypes.STRING(30),
         allowNull: false,
       },
 
-      User_Name: {
-        type: DataTypes.STRING(30),
-        allowNull: true,
-      },
-      User_Email: {
+      Email: {
         type: DataTypes.STRING(64),
         allowNull: false,
         unique: true,
-        required: [true, "Email address is required"],
+        // required: [true, "Email address is required"],
       },
-
-      pass_word: {
-        type: DataTypes.STRING,
+      Password: {
+        type: DataTypes.STRING(64),
         allowNull: false,
-        required: [true, "Password is required"],
+        unique: true,
       },
 
+      // Define a 'role' field with default value 'user' and enum values ['user', 'admin']
       role: {
         type: DataTypes.STRING,
         defaultValue: "user",
-        enum: ["user", "admin", "super_admin"],
+        enum: ["user", "admin"],
       },
     },
 
+    // Define hooks to perform actions before creating a user
     {
       hooks: {
         beforeCreate: async (user) => {
-          if (user.pass_word) {
+          if (user.Password) {
             const salt = await bcrypt.genSaltSync(10);
-            user.pass_word = bcrypt.hashSync(user.pass_word, salt);
+            user.Password = bcrypt.hashSync(user.Password, salt);
           }
         },
       },
     }
   );
-  usertbls.prototype.validPassword = async (pass_word, hash) => {
-    return await bcrypt.compareSync(pass_word, hash);
+
+  // Define custom methods for validating and hashing passwords
+  usertbls.prototype.validPassword = async (Password, hash) => {
+    return await bcrypt.compareSync(Password, hash);
   };
-  usertbls.prototype.getHashPass = async (pass_word) => {
+  usertbls.prototype.getHashPass = async (Password) => {
     const salt = await bcrypt.genSaltSync(10);
-    const hashed = bcrypt.hashSync(pass_word, salt);
+    const hashed = bcrypt.hashSync(Password, salt);
     return hashed;
   };
   return usertbls;
