@@ -102,19 +102,20 @@ exports.login = async (req, res) => {
     }
 
     const accessToken = generateToken(user);
-    const refreshToken = generateToken(user);
+    // const refreshToken = generateToken(user);
 
     //set refresh token into cookie
     const cookieOptions = {
       secure: process.env === "production" ? true : false,
       httpOnly: true,
     };
-    res.cookie("refreshToken", refreshToken, cookieOptions);
-    res.cookie("accessToken", accessToken, cookieOptions);
+    // res.cookie("accessToken", accessToken, cookieOptions);
+    // res.cookie("refreshToken", refreshToken, cookieOptions);
 
     res.status(200).send({
       status: "Success",
       message: "Logged in successfully",
+      accessToken,
     });
   } catch (error) {
     res.status(500).json({
@@ -124,6 +125,7 @@ exports.login = async (req, res) => {
     });
   }
 };
+
 exports.refreshToken = async (req, res) => {
   try {
     const { refreshToken } = req.cookies;
