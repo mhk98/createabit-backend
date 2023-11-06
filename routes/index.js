@@ -13,6 +13,9 @@ const cart = require("./cart");
 const checkout = require("./checkout");
 const order = require("./order");
 const payment = require("./payment");
+const category = require("./category");
+const subcategory = require("./subcategory");
+const model = require("./model");
 
 router.use("/user", user);
 router.use("/service", service);
@@ -29,5 +32,8 @@ router.use("/cart", cart);
 router.use("/checkout", checkout);
 router.use("/order", order);
 router.use("/payment", payment);
+router.use("/category", category);
+router.use("/subcategory", subcategory);
+router.use("/model", model);
 
 module.exports = router;

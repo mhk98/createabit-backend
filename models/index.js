@@ -51,6 +51,9 @@ db.cart = require("./cart/cart")(db.sequelize, DataTypes);
 db.checkout = require("./checkout/checkout")(db.sequelize, DataTypes);
 db.order = require("./order/order")(db.sequelize, DataTypes);
 db.payment = require("./payment/payment")(db.sequelize, DataTypes);
+db.category = require("./category/category")(db.sequelize, DataTypes);
+db.subCategory = require("./subcategory/subcategory")(db.sequelize, DataTypes);
+db.model = require("./model/model")(db.sequelize, DataTypes);
 
 // db.Course.hasMany(db.Intake, { foreignkey: "Course_Id" });
 // db.Intake.belongsTo(db.Course, { foreignkey: "Course_Id" });
