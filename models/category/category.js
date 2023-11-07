@@ -13,9 +13,18 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      Stock: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
       Image: {
         type: DataTypes.STRING,
         allowNull: false,
+      },
+      Check: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
       },
     },
     {
