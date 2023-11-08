@@ -67,9 +67,9 @@ exports.getAllCategory = async (req, res) => {
     });
   }
 };
-exports.updateCategory = async (req, res) => {
+exports.updateCategory = async (req, res, file) => {
   try {
-    const { id } = req.params;
+    const { updateId } = req.params;
     const { Name, Stock } = req.body;
 
     const data = {
@@ -77,11 +77,10 @@ exports.updateCategory = async (req, res) => {
       Stock: Stock,
       Image: req.file.path,
     };
-
-    console.log(data);
+    console.log("createCategory", req.body);
     const result = await Category.update(data, {
       where: {
-        Category_Id: id,
+        Category_Id: updateId,
       },
     });
 
