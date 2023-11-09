@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
         autoIncrement: true,
         allowNull: false,
       },
-      image: {
+      Image: {
         type: DataTypes.STRING,
         allowNull: false,
       },

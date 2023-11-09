@@ -9,7 +9,7 @@ exports.createProduct = async (req, res, file) => {
       title: title,
       text: text,
       price: price,
-      image: req.file.path,
+      Image: req.file.path,
     };
     const result = await Product.create(data);
 
