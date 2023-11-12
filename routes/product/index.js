@@ -4,6 +4,7 @@ const { upload } = require("../../middlewares/upload");
 
 router.post("/create-product", upload, product.createProduct);
 router.get("/", product.getAllProduct);
+router.get("/:id", product.singleProduct);
 router.delete("/:id", product.deleteProduct);
 
 module.exports = router;

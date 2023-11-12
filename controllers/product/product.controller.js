@@ -4,11 +4,12 @@ const ProductCategory = db.productCategory;
 
 exports.createProduct = async (req, res, file) => {
   try {
-    const { title, text, price } = req.body;
+    const { title, text, price, category } = req.body;
     const data = {
       title: title,
       text: text,
       price: price,
+      category: category,
       Image: req.file.path,
     };
     const result = await Product.create(data);
@@ -58,6 +59,30 @@ exports.deleteProduct = async (req, res) => {
     res.status(200).send({
       status: "Success",
       message: "Successfully delete product",
+      data: result,
+    });
+  } catch (error) {
+    res.status(500).json({
+      status: "fail",
+      message: "Something went wrong",
+      error: error.message,
+    });
+  }
+};
+
+exports.singleProduct = async (req, res) => {
+  try {
+    const { id } = req.params;
+    console.log("category", req.params);
+    const result = await Product.findAll({
+      where: {
+        category: id,
+      },
+    });
+
+    res.status(200).send({
+      status: "Success",
+      message: "Successfully got single product",
       data: result,
     });
   } catch (error) {
