@@ -65,6 +65,18 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         allowNull: false,
       },
+      Shipping_FirstName: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      Shipping_LastName: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
+      Shipping_Address: {
+        type: DataTypes.STRING,
+        allowNull: true,
+      },
     },
     {
       updatedAt: false,
