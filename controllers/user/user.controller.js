@@ -112,10 +112,15 @@ exports.login = async (req, res) => {
     // res.cookie("accessToken", accessToken, cookieOptions);
     // res.cookie("refreshToken", refreshToken, cookieOptions);
 
+    const data = {
+      user,
+      accessToken,
+    };
+
     res.status(200).send({
       status: "Success",
       message: "Logged in successfully",
-      accessToken,
+      data,
     });
   } catch (error) {
     res.status(500).json({
