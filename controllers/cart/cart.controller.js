@@ -3,12 +3,13 @@ const Cart = db.cart;
 
 exports.createCart = async (req, res, file) => {
   try {
-    const { title, price, image } = req.body;
-    console.log(req.body);
+    const { title, price, Image } = req.body;
+    console.log("cartDetailsProduct", req.body);
+
     const data = {
       title: title,
       price: price,
-      image: image,
+      Image: Image,
     };
     const result = await Cart.create(data);
 
