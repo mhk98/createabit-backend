@@ -101,6 +101,7 @@ exports.login = async (req, res) => {
       });
     }
 
+    console.log('user', user)
     const accessToken = generateToken(user);
     // const refreshToken = generateToken(user);
 
