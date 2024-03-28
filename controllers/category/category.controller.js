@@ -1,7 +1,7 @@
 const db = require("../../models");
 const Category = db.category;
 
-exports.createCategory = async (req, res, file) => {
+exports.createCategory = async (req, res) => {
   try {
     const result = await Category.create(req.body);
 

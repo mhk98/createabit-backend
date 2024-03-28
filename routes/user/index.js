@@ -6,7 +6,7 @@ const { upload } = require("../../middlewares/upload");
 router.post("/signup", upload, user.signup);
 router.post("/login", user.login);
 router.post("/refresh-token", user.refreshToken);
-router.get("/", auth("admin"), user.getAllUsers);
-router.get("/:id", auth("admin", "user"), user.getSingleUser);
+router.get("/", user.getAllUsers);
+router.get("/:id", user.getSingleUser);
 
 module.exports = router;

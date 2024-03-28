@@ -6,6 +6,6 @@ router.post("/create-product", upload, product.createProduct);
 router.get("/", product.getAllProduct);
 router.get("/:id", product.singleProduct);
 router.delete("/:id", product.deleteProduct);
-router.patch("/:id", product.updateProduct);
+router.patch("/:id", upload, product.updateProduct);
 
 module.exports = router;

@@ -10,7 +10,7 @@ exports.createProduct = async (req, res, file) => {
       text: text,
       price: price,
       category: category,
-      image: req.file.path,
+      image: req.file ? req.file.path || "" : "",
     };
 
     console.log(data);
